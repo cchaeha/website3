@@ -3577,6 +3577,10 @@ input, select, textarea {
 				/*padding: 6em 2em 2em 2em ;*/
 			}
 
+#banner h1 {
+					font-size: 1.75em;
+					
+				}
 		}
 
 		body.is-preload #banner .inner {
