@@ -3165,7 +3165,7 @@ input, select, textarea {
 		@media screen and (max-width: 480px) {
 
 			#header .logo span {
-				display: none;
+				font-weight: 300;
 			}
 
 			#header nav ul li a[href="#menu"]:only-child {
