@@ -6,10 +6,330 @@
 -->
 <html>
 	<head>
-		<title>HUM.Lab</title>
+		<title>HUM.Lab - Team</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+		<style>
+			/* Modern Card-Based Team Page Styles */
+			.team-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2em;
+				margin: 2em 0;
+			}
+			
+			.team-card {
+				background: #ffffff;
+				border-radius: 15px;
+				padding: 2em;
+				text-align: center;
+				box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.team-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+			}
+			
+			.team-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 4px;
+				background: linear-gradient(90deg, #84dbbd, #70d5b2);
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+			
+			.team-card:hover::before {
+				opacity: 1;
+			}
+			
+			.team-card img {
+				width: 173px;
+				height: 173px;
+				border-radius: 50%;
+				object-fit: cover;
+				object-position: center;
+				margin: 0 auto 1.5em auto;
+				display: block;
+				border: 4px solid #f0f0f0;
+				transition: all 0.3s ease;
+			}
+			
+			.team-card:hover img {
+				border-color: #84dbbd;
+				transform: scale(1.05);
+			}
+			
+			/* Individual photo positioning adjustments - only object-position, no size changes */
+			/* All images maintain the same size - only positioning within the circle is adjusted */
+			
+			/* Adjust positioning for faces that need centering */
+			img[alt="Chris Lim"] {
+				object-fit: cover;
+				object-position: center 15%;
+			}
+			
+			img[alt="Ian Estacio"] {
+				object-fit: cover;
+				object-position: center 25%;
+			}
+			
+			img[alt="Grace Chao"] {
+				object-fit: cover; 
+				object-position: center 40%;
+			}
+			
+			img[alt="Jeonggyo Yoon"] {
+				object-fit: cover;
+				object-position: center 30%;
+			}
+			
+			img[alt="Hassan Alzahir"] {
+				object-fit: cover;
+				object-position: center 35%;
+			}
+			
+			img[alt="Mahdi Faraji"] {
+				object-fit: cover;
+				object-position: center 40%;
+			}
+			
+			img[alt="Ahmed Batobara"] {
+				object-fit: cover;
+				object-position: center 20%;
+			}
+			
+			img[alt="Logan Kenny"] {
+				object-fit: cover;
+				object-position: center 45%;
+			}
+			
+			img[alt="Rebecca Avila"] {
+				object-fit: cover;
+				object-position: center center;
+			}
+			
+			img[alt="Chelsea Starke"] {
+				object-fit: cover;
+				object-position: center 15%;
+			}
+			
+			img[alt="Athira Satheesh"] {
+				object-fit: cover;
+				object-position: center center;
+			}
+			
+			img[alt="Mojisola Ajayi"] {
+				object-fit: cover;
+				object-position: center 20%;
+			}
+			
+			img[alt="Sarvesh Paradkar"] {
+				object-fit: cover;
+				object-position: center center;
+			}
+			
+			img[alt="Geetika Dutta"] {
+				object-fit: cover;
+				object-position: center 35%;
+			}
+			
+			img[alt="Leesa Lyons"] {
+				object-fit: cover;
+				object-position: center center;
+			}
+			
+			img[alt="Heba Abdelrazzak"] {
+				object-fit: cover;
+				object-position: center center;
+			}
+			
+			img[alt="Aracely Esquer"] {
+				object-fit: cover;
+				object-position: center center;
+			}
+			
+			.team-card h3 {
+				margin: 0 0 0.5em 0;
+				color: #2c3e50;
+				font-weight: 300;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				font-size: 1.1em;
+			}
+			
+			.expand-btn {
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				margin: 1em auto 0;
+				border: 2px solid #84dbbd;
+				border-radius: 50%;
+				position: relative;
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+			
+			.expand-btn:hover {
+				background-color: #84dbbd;
+				transform: scale(1.1);
+			}
+			
+			.expand-btn::before,
+			.expand-btn::after {
+				content: '';
+				position: absolute;
+				background-color: #84dbbd;
+				transition: all 0.3s ease;
+			}
+			
+			.expand-btn::before {
+				width: 14px;
+				height: 2px;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			
+			.expand-btn::after {
+				width: 2px;
+				height: 14px;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			
+			.expand-btn:hover::before,
+			.expand-btn:hover::after {
+				background-color: #ffffff;
+			}
+			
+			.expand-btn.expanded::after {
+				height: 0;
+			}
+			
+			.team-card .title {
+				color: #7f8c8d;
+				margin-bottom: 1em;
+				font-weight: 300;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				font-size: 0.9em;
+			}
+			
+			
+			.team-card .full-bio {
+				color: #606060;
+				line-height: 1.7;
+				margin-top: 1.5em;
+				display: none;
+				text-align: left;
+				padding-top: 1.5em;
+				border-top: 1px solid #ecf0f1;
+			}
+			
+			.team-card .full-bio p {
+				margin-bottom: 0.8em;
+			}
+			
+			.team-card .full-bio strong {
+				color: #2c3e50;
+			}
+			
+			/* Principal Investigator Special Styling */
+			.pi-section {
+				margin-bottom: 3em;
+			}
+			
+			.pi-card {
+				max-width: 500px;
+				margin: 0 auto;
+				background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+			}
+			
+			.pi-card img {
+				width: 207px;
+				height: 207px;
+				border: 5px solid #84dbbd;
+			}
+			
+			/* Section Headers */
+			.section-header {
+				text-align: center;
+				margin: 4em 0 2.5em 0;
+				position: relative;
+			}
+			
+			.section-header h2 {
+				color: #2c3e50;
+				font-weight: 300;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				margin: 0;
+				padding: 0 20px;
+				background: #fff;
+				display: inline-block;
+				position: relative;
+			}
+			
+			.section-header::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 0;
+				right: 0;
+				height: 1px;
+				background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+				z-index: -1;
+			}
+			
+			/* Social Links */
+			.social-links {
+				display: flex;
+				gap: 1em;
+				justify-content: center;
+				margin-top: 1.5em;
+				padding-top: 1em;
+				border-top: 1px solid #ecf0f1;
+			}
+			
+			.social-btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background: #f8f9fa;
+				color: #7f8c8d;
+				text-decoration: none;
+				transition: all 0.3s ease;
+			}
+			
+			.social-btn:hover {
+				background: #84dbbd;
+				color: #ffffff;
+				transform: translateY(-3px);
+				box-shadow: 0 4px 10px rgba(132, 219, 189, 0.3);
+			}
+			
+			/* Responsive adjustments */
+			@media screen and (max-width: 736px) {
+				.team-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -32,161 +352,263 @@
 							<li><a href="index.html">Home</a></li>
 							<li><a href="team.html">Team</a></li>
 							<li><a href="papers.html">Publications</a></li>
+							<li><a href="work.html">Projects</a></li>
 						</ul>
 					</nav>
 					
 				<!-- Wrapper -->
-
-						<!-- Main -->
-							<section id="main" class="main">
-								<div class="inner">
-									<header class="major">
-										<h1>Team</h1>
-									</header>
-									
-									
-									<div id="wrapper">
-					
-	
-<section id="two" class="main">
-  <div class="inner spotlight alt style2">
-    <div class="content">
-   								  	<h2>Chris Lim</h2>	
-								<div class="row">
-
-
-								</div>
-												<h3>Principal Investigator</h3>
-
-										<p>My research interests include evaluating the health effects of environmental exposures and application of sensors for exposure assessment. I graduated from the NYU School of Medicine with a PhD and Yale University with a MS in Biostatistics. I am affiliated with the University of Arizona Cancer Center, the Sarver Heart Center, ESRAC, SWEHSC, SW-IFL, EJ 
-
-</p>
+				<div id="wrapper">
+					<!-- Main -->
+					<section id="main" class="main">
+						<div class="inner">
+							<header class="major">
+								<h2>Our Team</h2>
+							</header>
 							
-
+							<!-- Principal Investigator -->
+							<div class="pi-section">
+								<div class="section-header">
+									<h2>Principal Investigator</h2>
 								</div>
-																<p><span class="image left"><img src="images/ChrisLim.jpg" alt="" /></span></p> 
-
-							</section>
-
- <section id="two" class="main">
-  <div class="inner spotlight alt style2">
-    <div class="content">
-<h2>Ian Estacio</h2>	
-								<div class="row">
-
-
+								<div class="team-card pi-card">
+									<img src="images/ChrisLim.jpg" alt="Chris Lim" />
+									<h3>Chris Lim</h3>
+									<div class="title">Principal Investigator</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										Ph.D. Environmental Medicine, NYU School of Medicine<br>
+										M.S. Biostatistics, Yale University<br>
+										B.S. Environmental Engineering, Columbia University</p>
+										<p><strong>Research Interests:</strong> My research interests include evaluating the health effects of environmental exposures and application of sensors for exposure assessment.</p>
+									</div>
 								</div>
-								<h3>Postdoctoral Associate</h3>
-	<p>Ph.D. Environmental Medicine, NYU School of Medicine, 2019
+							</div>
 
-                M.S. Biostatistics, Yale University, 2012
-
-                B.S. Environmental Engineering, Columbia University, 2010</p>
+							<!-- Postdoctoral Associates -->
+							<div class="section-header">
+								<h2>Postdoctoral Associates</h2>
+							</div>
+							<div class="team-grid">
+								<div class="team-card">
+									<img src="images/Ian.jpg" alt="Ian Estacio" />
+									<h3>Ian Estacio</h3>
+									<div class="title">Postdoctoral Associate</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										Ph.D. Environmental Management, Kyoto University, Japan, 2023<br>
+										M.S. Geomatics Engineering, University of the Philippines, Philippines, 2019<br>
+										B.S. Geodetic Engineering, University of the Philippines, Philippines, 2016</p>
+										<p><strong>Research Interests:</strong> Expertise in developing geospatial tools for understanding and predicting Earth system dynamics and human-environment feedback loops.</p>
+									</div>
 								</div>
-																													<p><span class="image left"><img src="images/Ian.jpg" alt="" /></span></p>
-
-							</section>
-
-
-
- <section id="two" class="main">
-  <div class="inner spotlight alt style2">
-    <div class="content">
-<h2>Jeonggyo</h2>	
-								<div class="row">
-
-
+								<div class="team-card">
+									<img src="images/kylie.png" alt="Kylie Wilson" />
+									<h3>Kylie Wilson</h3>
+									<div class="title">Postdoctoral Associate</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										Ph.D. Exercise and Nutritional Sciences, Arizona State University, 2024</p>
+										<p><strong>Research Interests:</strong> My interdisciplinary research explores how environmental and social factors influence behavior and health outcomes, aiming to promote active schools and communities through co-designed, sustainable strategies.</p>
+									</div>
 								</div>
-								<h3>PhD Student</h3>
-	<p>Ph.D. Environmental Medicine, NYU School of Medicine, 2019
+							</div>
 
-                M.S. Biostatistics, Yale University, 2012
-
-                B.S. Environmental Engineering, Columbia University, 2010</p>
+							<!-- Doctoral Students -->
+							<div class="section-header">
+								<h2>Doctoral Students</h2>
+							</div>
+							<div class="team-grid">
+								<div class="team-card">
+									<img src="images/grace-c.png" alt="Grace Chao" />
+									<h3>Grace Chao</h3>
+									<div class="title">PhD Student</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										B.A. in Public Health, University of Washington, 2018<br>
+										MPH in Environmental Health Sciences, Columbia University, 2021</p>
+										<p><strong>Research Interests:</strong> I am interested in exploring how changes in air quality and climate affect public health, and I use geospatial analysis to explore health impacts and climate-related disparities across communities.</p>
+									</div>
 								</div>
-																													<p><span class="image left"><img src="images/Ian.jpg" alt="" /></span></p>
-
-							</section>
-
-
-	<u>	<h2>PhD Students</h2>	</u>	
-																				<div class="row">
-
-											<div class="col-4 col-12-medium">
-											  
-									  
-								<h3>Grace Chao</h3>
-													<p><span class="image left"><img src="images/Grace.png" alt="" /></span></p>
+								<div class="team-card">
+									<img src="images/jeonggyo-c.png" alt="Jeonggyo Yoon" />
+									<h3>Jeonggyo Yoon</h3>
+									<div class="title">PhD Student</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										B.S. Biomedical Engineering, Gachon University, S.Korea, 2017<br>
+										M.S. Preventive Medicine, Gachon University, S.Korea, 2019</p>
+										<p><strong>Research Interests:</strong> I aim to research the impact of environmental factors and their effect on chronic diseases with a major interest in public health using geospatial, machine learning and experimental approaches. I am also interested in evaluating health inequalities and disparities using Environmental Justice lenses to assess the disproportionate effect of environmental risk factors in minority groups.</p>
+										<div class="social-links">
+											<a href="https://scholar.google.com/citations?hl=en&user=zwMnRG4AAAAJ" target="_blank" class="social-btn" title="Google Scholar">
+												<i class="ai ai-google-scholar"></i>
+											</a>
+											<a href="https://www.linkedin.com/in/jeonggyo-yoon-272708184" target="_blank" class="social-btn" title="LinkedIn">
+												<i class="fab fa-linkedin"></i>
+											</a>
+										</div>
+									</div>
 								</div>
-											<div class="col-4 col-12-medium">
-								<h3>Jeonggyo Yoon</h3>
-													<p><span class="image left"><img src="images/Jeonggyo2.jpg" alt="" /></span></p>
+								<div class="team-card">
+									<img src="images/hassan.png" alt="Hassan Alzahir" />
+									<h3>Hassan Alzahir</h3>
+									<div class="title">PhD Student</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Research Focus:</strong> Environmental health policy and community-based research.</p>
+										<p><strong>Background:</strong> Bringing expertise in public health policy to environmental research.</p>
+									</div>
 								</div>
-								
-						
-								
-								</div>							
-	<u>	<h2>Research Staff</h2>	</u>	
-																				<div class="row">
+								<div class="team-card">
+									<img src="images/mahdi.png" alt="Mahdi Faraji" />
+									<h3>Mahdi Faraji</h3>
+									<div class="title">PhD Student</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										B.Sc. & M.Sc. both in Occupational Health Engineering, Tarbiat Modares University</p>
+										<p><strong>Research:</strong> I am conducting research on integrating Air Pollution with Human Health Outcomes through AI and Big Data analytics, applying Machine Learning to develop EHS and ESG strategies to contribute to protecting vulnerable populations and promoting sustainable innovation in public health.</p>
+										<div class="social-links">
+											<a href="https://www.linkedin.com/in/mahdi-faraji-69726624a" target="_blank" class="social-btn" title="LinkedIn">
+												<i class="fab fa-linkedin"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="team-card">
+									<img src="images/ahmed-c.png" alt="Ahmed Batobara" />
+									<h3>Ahmed Batobara</h3>
+									<div class="title">PhD Student</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										Medical Degree, Alexandria University, Egypt, 2012<br>
+										Master of Public Health, Johns Hopkins University, 2024</p>
+										<p><strong>Research Interests:</strong> I am interested in the intersection of environmental exposures, social determinants of health, and chronic diseases, focusing on how air pollution, climate, and built environment factors influence health. I also explore spatial analysis and machine learning methods to better understand health disparities at both local and global scales.</p>
+									</div>
+								</div>
+								<div class="team-card">
+									<img src="images/kenny.jpg" alt="Logan Kenny" />
+									<h3>Logan Kenny</h3>
+									<div class="title">MD Student</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										B.S. Political Science, Arizona State University, 2021<br>
+										B.S. Biology, Arizona State University, 2024</p>
+										<p><strong>Research Interests:</strong> I am interested in getting a better understanding of how inequalities in our healthcare system, and society at large, impact different communities.</p>
+									</div>
+								</div>
+								<div class="team-card">
+									<img src="images/rebecca.jpg" alt="Rebecca Avila" />
+									<h3>Rebecca Avila</h3>
+									<div class="title">MD Student</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										B.S. Biochemistry with minor in Psychology, Arizona State University, 2021<br>
+										University of Arizona College of Medicine-Phoenix (Expected May 2028)</p>
+										<p><strong>Research Interests:</strong> I aim to research the health outcomes of underserved populations relating to the built environment, climate change, public policy, and resource access.</p>
+									</div>
+								</div>
+							</div>
 
-											<div class="col-4 col-12-medium">
-											  
-								<h3>Chelsea Starke</h3>
-													<p><span class="image left"><img src="images/Chelsea2.jpg" alt="" /></span></p>
+							<!-- Research Staff -->
+							<div class="section-header">
+								<h2>Research Staff</h2>
+							</div>
+							<div class="team-grid">
+								<div class="team-card">
+									<img src="images/Athira.png" alt="Athira Satheesh" />
+									<h3>Athira Satheesh</h3>
+									<div class="title">Research Associate</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Focus Area:</strong> Environmental health policy and community interventions.</p>
+										<p><strong>Current Projects:</strong> Investigating policy impacts on environmental health outcomes.</p>
+									</div>
 								</div>
-											<div class="col-4 col-12-medium">
-								<h3>Sarvesh Paradkar</h3>
-													<p><span class="image left"><img src="images/sarvesh.png" alt="" /></span></p>
+								<div class="team-card">
+									<img src="images/pic05.jpg" alt="Andrew Weesner" />
+									<h3>Andrew Weesner</h3>
+									<div class="title">Research Associate</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Role:</strong> Conducts field research and manages data collection protocols.</p>
+										<p><strong>Expertise:</strong> Environmental sampling, field instrumentation, and data quality assurance.</p>
+									</div>
 								</div>
-								
-								<div class="col-4 col-12-medium">
-								<h3>Andrew Weesner</h3>
-													<p><span class="image left"><img src="images/pic05.jpg" alt="" /></span></p>
+								<div class="team-card">
+									<img src="images/pic05.jpg" alt="Heba Abdelrazzak" />
+									<h3>Heba Abdelrazzak</h3>
+									<div class="title">Research Associate</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Role:</strong> Research associate supporting environmental health projects.</p>
+										<p><strong>Expertise:</strong> Data analysis and research support.</p>
+									</div>
 								</div>
-								</div>							
-														
-	<u><b><h2>MPH Students</h2></b></u>		
-				<div class="row">
+							</div>
 
-			  <div class="col-4 col-12-medium">
-				<p><span class="image left"><img src="images/Athira.png" alt="" /></span></p>
-				<h3>Athira Satheesh</h3>
+							<!-- Masters Students -->
+							<div class="section-header">
+								<h2>Masters Students</h2>
+							</div>
+							<div class="team-grid">
+								<div class="team-card">
+									<img src="images/rhiannon.heic" alt="Rhiannon Curtis" />
+									<h3>Rhiannon Curtis</h3>
+									<div class="title">MS in Epidemiology Student</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										B.S. Human Biology with minor in Statistics, North Carolina State University, 2022<br>
+										M.S. Epidemiology, Georgetown University (Expected 2026)</p>
+										<p><strong>Research Interests:</strong> My research interests include reproductive epidemiology, particularly reproductive cancers and the impact of environmental exposures on reproductive outcomes. I am also interested in the relationship between environmental factors and skin cancers, and have a special emphasis on applying geospatial methods to these areas.</p>
+									</div>
+								</div>
+								<div class="team-card">
+									<img src="images/mojisola-c.png" alt="Mojisola Ajayi" />
+									<h3>Mojisola Ajayi</h3>
+									<div class="title">Masters Student</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Education:</strong><br>
+										B.S. Environmental Engineering, University of Arizona, 2023</p>
+										<p><strong>Research Interests:</strong> I am interested in air pollution, climate change, and global health. I am also interested in improving environmental awareness in underserved communities.</p>
+									</div>
+								</div>
+								<div class="team-card">
+									<img src="images/pic05.jpg" alt="Aracely Esquer" />
+									<h3>Aracely Esquer</h3>
+									<div class="title">Masters Student</div>
+									<div class="expand-btn" onclick="toggleBio(this)"></div>
+									<div class="full-bio">
+										<p><strong>Research Focus:</strong> Environmental health research.</p>
+										<p><strong>Background:</strong> Graduate student in environmental health sciences.</p>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+					</section>
 				</div>
-				
-				<div class="col-4 col-12-medium">
-				<p><span class="image left"><img src="images/Geetika.png" alt="" /></span></p>
-				<h3>Geetika Dutta</h3>
-        </div>
-											
-				<div class="col-4 col-12-medium">
-				<p><span class="image left"><img src="images/leesa.png" alt="" /></span></p>
-				<h3>Leesa Lyons</h3>
-      	</div>
-									
-				<div class="col-4 col-12-medium">
-				<p><span class="image left"><img src="images/hassan.png" alt="" /></span></p>
-				<h3>Hassan Alzahir</h3>
-				</div>
-							
-			</div>								
-					
-					<h2>Interns</h2>		
-	    <div class="row">
-      <div class="col-4 col-12-medium">
-    	<p><span class="image left"><img src="images/Arin.jpg" alt="" /></span></p>
-			<h3>Arin Harkawat</h3>
-      </div>
-			
-							</section>
-
-					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
-						
+							<div style="text-align: center; margin-bottom: 2em;">
+								<img src="images/lablogo.png" alt="HUM.Lab Logo" style="max-width: 200px; height: auto;">
+							</div>
+							<ul class="copyright">
+								<li>&copy; HUM.Lab. All rights reserved.</li>
+							</ul>
 						</div>
-						<p class="copyright">&copy; HUM.Lab. All rights reserved.</p>
 					</footer>
 
 			</div>
@@ -194,11 +616,24 @@
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function toggleBio(expandBtn) {
+					const teamCard = expandBtn.closest('.team-card');
+					const fullBio = teamCard.querySelector('.full-bio');
+					
+					if (fullBio.style.display === 'block') {
+						fullBio.style.display = 'none';
+						expandBtn.classList.remove('expanded');
+					} else {
+						fullBio.style.display = 'block';
+						expandBtn.classList.add('expanded');
+					}
+				}
+			</script>
 
 	</body>
 </html>

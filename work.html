@@ -6,10 +6,303 @@
 -->
 <html>
 	<head>
-		<title>Untitled</title>
+		<title>Research & Projects - HUM.Lab</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Expandable Summary Styles */
+			.expand-summary-btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 30px;
+				height: 30px;
+				border: 2px solid #84dbbd;
+				border-radius: 50%;
+				position: absolute;
+				bottom: 20px;
+				left: 50%;
+				transform: translateX(-50%);
+				cursor: pointer;
+				transition: all 0.3s ease;
+				background: white;
+				z-index: 2;
+			}
+			
+			.expand-summary-btn:hover {
+				background-color: #84dbbd;
+				transform: translateX(-50%) scale(1.1);
+			}
+			
+			.expand-summary-btn::before,
+			.expand-summary-btn::after {
+				content: '';
+				position: absolute;
+				background-color: #84dbbd;
+				transition: all 0.3s ease;
+			}
+			
+			.expand-summary-btn::before {
+				width: 14px;
+				height: 2px;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			
+			.expand-summary-btn::after {
+				width: 2px;
+				height: 14px;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			
+			.expand-summary-btn:hover::before,
+			.expand-summary-btn:hover::after {
+				background-color: #ffffff;
+			}
+			
+			.expand-summary-btn.expanded::after {
+				height: 0;
+			}
+			
+			.grant-summary {
+				display: none;
+				margin-top: 1.5em;
+				padding-top: 1.5em;
+				border-top: 2px solid #ecf0f1;
+			}
+			
+			.grant-summary p {
+				color: #606060;
+				line-height: 1.7;
+				margin-bottom: 1em;
+			}
+			
+			.grant-links {
+				display: flex;
+				gap: 1em;
+				flex-wrap: wrap;
+				margin-top: 1em;
+			}
+			
+			.grant-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				padding: 0.5em 1em;
+				background: #f8f9fa;
+				color: #84dbbd;
+				text-decoration: none;
+				border-radius: 20px;
+				transition: all 0.3s ease;
+				border: 1px solid #84dbbd;
+			}
+			
+			.grant-link:hover {
+				background: #84dbbd;
+				color: white;
+				transform: translateY(-2px);
+				box-shadow: 0 4px 10px rgba(132, 219, 189, 0.3);
+			}
+			
+			.grant-link i {
+			}
+			
+			/* Enhanced Grant Items */
+			.grant-item {
+				margin-bottom: 2em;
+				padding: 2em 2em 3.5em 2em;
+				background: white;
+				border-radius: 12px;
+				border-left: 5px solid #84dbbd;
+				box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: visible;
+			}
+			
+			.grant-item:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+			}
+			
+			.grant-item::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 100px;
+				height: 100px;
+				background: linear-gradient(135deg, transparent, rgba(132, 219, 189, 0.05));
+				border-radius: 0 0 0 100%;
+			}
+			
+			.grant-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: start;
+				margin-bottom: 1em;
+				flex-wrap: wrap;
+				gap: 1em;
+				position: relative;
+			}
+			
+			.grant-title {
+				font-weight: 400;
+				color: #2c3e50;
+				margin-bottom: 0.5em;
+				flex: 1;
+				line-height: 1.4;
+				padding-right: 60px;
+			}
+			
+			.grant-status {
+				display: inline-block;
+				padding: 0.4em 1em;
+				border-radius: 20px;
+				font-weight: 500;
+				text-transform: uppercase;
+			}
+			
+			.status-active {
+				background: #84dbbd;
+				color: white;
+			}
+			
+			.status-completed {
+				background: #95a5a6;
+				color: white;
+			}
+			
+			.status-pending {
+				background: #f39c12;
+				color: white;
+			}
+			
+			.grant-agency {
+				color: #7f8c8d;
+				font-weight: 400;
+				margin-bottom: 1em;
+				display: flex;
+				align-items: center;
+				gap: 0.5em;
+			}
+			
+			.agency-icon {
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+				background: #84dbbd;
+				border-radius: 50%;
+				text-align: center;
+				line-height: 20px;
+				color: white;
+				font-weight: bold;
+				font-size: 12px;
+			}
+			
+			.grant-details {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 1.5em;
+				margin-bottom: 1em;
+			}
+			
+			.grant-detail-item {
+				display: flex;
+				flex-direction: column;
+				gap: 0.3em;
+			}
+			
+			.detail-label {
+				color: #95a5a6;
+				font-size: 0.85em;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+			
+			.detail-value {
+				color: #2c3e50;
+				font-weight: 400;
+			}
+			
+			.funding-amount {
+				color: #84dbbd;
+			}
+			
+			/* Section Headers */
+			.main-section {
+				margin-bottom: 4em;
+			}
+			
+			.main-section-header {
+				text-align: center;
+				margin: 3em 0 2em 0;
+				padding: 1.5em 0;
+				background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+				border-radius: 15px;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.main-section-header::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 4px;
+				background: linear-gradient(90deg, #84dbbd, #70d5b2, #84dbbd);
+				animation: gradient-shift 3s ease infinite;
+			}
+			
+			@keyframes gradient-shift {
+				0%, 100% { background-position: 0% 50%; }
+				50% { background-position: 100% 50%; }
+			}
+			
+			.main-section-header h2 {
+				color: #2c3e50;
+				font-weight: 300;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				margin: 0;
+				font-size: 1.2em;
+			}
+			
+			.subsection-header {
+				margin: 2em 0 1.5em 0;
+				padding-bottom: 0.5em;
+				border-bottom: 2px solid #ecf0f1;
+			}
+			
+			.subsection-header h3 {
+				color: #7f8c8d;
+				font-weight: 400;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				font-size: 1.75em;
+			}
+			
+			/* Responsive adjustments */
+			@media screen and (max-width: 736px) {
+				.grant-details {
+					flex-direction: column;
+					gap: 1em;
+				}
+				
+				.grant-header {
+					flex-direction: column;
+				}
+				
+				.grant-title {
+					padding-right: 0;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -27,12 +320,12 @@
 					</header>
 
 				<!-- Menu -->
-						<nav id="menu">
+					<nav id="menu">
 						<ul class="links">
 							<li><a href="index.html">Home</a></li>
 							<li><a href="team.html">Team</a></li>
-							<li><a href="projects.html">Projects</a></li>
 							<li><a href="papers.html">Publications</a></li>
+							<li><a href="work.html">Projects</a></li>
 						</ul>
 					</nav>
 
@@ -40,61 +333,467 @@
 					<div id="wrapper">
 
 						<!-- Main -->
-						<!-- Four -->
-							<section id="four" class="main special">
+							<section id="main" class="main">
 								<div class="inner">
-									<header>
-										<h2>Ongoing Work</h2>
+									<header class="major">
+										<h2>Research & Projects</h2>
 									</header>
-									<div class="features">
-										<section>
-											<span class="fa fa-database fa-2x"></span>
-											<br></br>
-											<h3>Data Science and Public Health</h3>
-											<p>One major theme of our research is in leveraging the increasingly available open and big data sources to elucidate the association between underexplored environmental exposures and health outcomes at the population level. </p>
-										</section>
-										<section>
-											<span class="fa fa-thermometer-full fa-2x"></span>
-											<br></br>
-											<h3>Sensors and IoT</h3>
-											<p>Another main area of work is exploring the potential of low-cost sensors for modeling the urban environment, citizen science, and individual-level exposure assessment, and the application of wearable sensors to measure health outcomes.</p>
-										</section>
-										<section>
-											<span class="fa fa-rss fa-2x"></span>
-																						<br></br>
-
-											<h3>Climate Change and Health</h3>
-											<p>With climate change expected to intensify population-level exposures to air pollution, temperature, and extreme weather events, the corresponding public health burden will be considerable. Our work aims to quantify the impacts of increasing exposures on various health outcomes.</p>
-										</section>
-										<section>
-											<span class="fa fa-balance-scale fa-2x"></span>
-																						<br></br>
-
-											<h3>Environmental Justice</h3>
-											<p>We work with community organizations and apply data with an emphasis on examining potential disparities in the levels of exposures and the associated health impacts. </p>
-										</section>
+									
+									<!-- CURRENT PROJECTS -->
+									<div class="main-section">
+										<div class="main-section-header">
+											<h2>Current Projects</h2>
+										</div>
+										
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Neighborhood built and social environments and cancer risk in the U.S.</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">A</span>
+											American Cancer Society
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$1,200,000</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Lim</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">Principal Investigator</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2025 – 2030</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>This project investigates how neighborhood characteristics, including built environment features and social factors, influence cancer risk across diverse U.S. populations. The research examines how factors such as walkability, green space access, air quality, and social cohesion may contribute to cancer disparities.</p>
+											<div class="grant-links">
+												<a href="https://www.cancer.org/" target="_blank" class="grant-link">
+													<i class="fas fa-external-link-alt"></i> American Cancer Society
+												</a>
+											</div>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
 									</div>
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Short-term Environmental Exposures and Emergency Medical Service Activation in the U.S.</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">N</span>
+											National Institute of Environmental Health Sciences
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$1,621,980</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Lim</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">Principal Investigator</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2024 – 2028</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>This study examines the relationship between short-term environmental exposures, including air pollution, extreme temperatures, and other environmental factors, and emergency medical service (EMS) activations across the United States. The research aims to identify vulnerable populations and develop predictive models to improve emergency response systems.</p>
+											<div class="grant-links">
+												<a href="https://reporter.nih.gov/search/zvH_UudTW02h3xQzsj6Gfw/project-details/10892318" target="_blank" class="grant-link">
+													<i class="fas fa-file-alt"></i> NIH RePORTER
+												</a>
+												<a href="https://www.niehs.nih.gov/" target="_blank" class="grant-link">
+													<i class="fas fa-external-link-alt"></i> NIEHS Website
+												</a>
+											</div>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Mapping future wildfire risk and impact in Arizona in the advent of climate change</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">S</span>
+											Salt River Project
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$78,700</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Lim & Estacio</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">MPI</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2025 – 2026</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>This project develops predictive models for wildfire risk assessment in Arizona under various climate change scenarios. The research aims to inform fire management strategies and community preparedness initiatives across the state.</p>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Remote Sensing for Drivers of Golden Algae Blooms in Surface Water Sources</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">S</span>
+											Salt River Project
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$78,700</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Lim</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">Principal Investigator</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2025 – 2026</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>This research utilizes remote sensing technologies to identify and predict golden algae bloom occurrences in Arizona's surface water sources. The project aims to develop early warning systems for water quality management.</p>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">The DUST Center: Hazardous Dust in Drylands - Exposure, Health Impacts, and Mitigation</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">N</span>
+											National Institute of Environmental Health Sciences
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$2,732,383</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Ding</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">Co-I (Community Engagement Core)</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2025 – 2030</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>The DUST Center investigates hazardous dust exposure in dryland regions, assessing health impacts and developing mitigation strategies. The center focuses on understanding dust composition, exposure pathways, and community-based interventions.</p>
+											<div class="grant-links">
+												<a href="https://superfund.arizona.edu" target="_blank" class="grant-link">
+													<i class="fas fa-external-link-alt"></i> Superfund Research Center
+												</a>
+												<a href="https://reporter.nih.gov/search/0YH47O6LnUiK1wvEYYhUCw/project-details/10937845" target="_blank" class="grant-link">
+													<i class="fas fa-file-alt"></i> NIH RePORTER
+												</a>
+											</div>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Variations in long-term fine particulate matter air pollution associations with mortality by particle size, source, and composition</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">N</span>
+											National Institute of Environmental Health Sciences
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$1,348,885</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Thurston (NYU)</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">Consultant</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2023 – 2026</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>This research investigates how different characteristics of fine particulate matter affect mortality risks, examining variations by particle size, source, and chemical composition to inform targeted air quality interventions.</p>
+											<div class="grant-links">
+												<a href="https://reporter.nih.gov/search/xD6GO6sXIECSx-Sy-RynRg/project-details/10718385" target="_blank" class="grant-link">
+													<i class="fas fa-file-alt"></i> NIH RePORTER
+												</a>
+											</div>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Southwest Center on Resilience for Climate Change and Health (SCORCH)</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">N</span>
+											National Institute of Environmental Health Sciences
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$3,827,073</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Ernst, Arora, Hoover</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">Co-I (Project 2, Data Visualization Core)</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2023 – 2026</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>SCORCH is a comprehensive center focused on building resilience to climate change impacts on health in the Southwest. The center conducts research on heat-related health impacts, develops community adaptation strategies, and provides training for health professionals to address climate-related health challenges.</p>
+											<div class="grant-links">
+												<a href="https://scorch.arizona.edu" target="_blank" class="grant-link">
+													<i class="fas fa-external-link-alt"></i> SCORCH Website
+												</a>
+												<a href="https://reporter.nih.gov/search/nEq957DyQ06pZtfF31E-sw/project-details/10835394" target="_blank" class="grant-link">
+													<i class="fas fa-file-alt"></i> NIH RePORTER
+												</a>
+											</div>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Southwest Urban Corridor Integrated Field Laboratory (SW-IFL)</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">D</span>
+											U.S. Department of Energy
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$8,250,000</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Sailor (ASU), Keith (UA)</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">Co-I</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2022 – 2027</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>The SW-IFL is a Department of Energy initiative studying urban climate dynamics in the Phoenix-Tucson corridor. The laboratory integrates observational networks, modeling, and community engagement to understand urban heat, air quality, and climate resilience strategies in desert cities.</p>
+											<div class="grant-links">
+												<a href="https://sw-ifl.asu.edu" target="_blank" class="grant-link">
+													<i class="fas fa-external-link-alt"></i> SW-IFL Website
+												</a>
+											</div>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Community Monitoring for Environmental Justice in Tucson</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">E</span>
+											U.S. Environmental Protection Agency
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$500,000</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Shepp (PDEQ)</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">Subcontract PI</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2023 – 2026</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>This environmental justice initiative empowered Tucson communities to monitor and address local environmental health concerns. The project provided communities with air quality sensors, training, and data analysis support to identify and advocate for solutions to environmental health disparities.</p>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+									</div>
+									
+									<!-- PAST PROJECTS -->
+									<div class="main-section">
+										<div class="main-section-header">
+											<h2>Past Projects (as PI)</h2>
+										</div>
+										
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Impact of Schoolyards to Playgrounds Renovations on Academic Performance and Health</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">R</span>
+											Robert Wood Johnson Foundation (RWJF)
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$303,972</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Lim</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">Principal Investigator</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2021 – 2025</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>This research evaluated the impact of schoolyard renovations on student health, academic performance, and well-being. The study assessed how green infrastructure and playground improvements affect physical activity levels, heat exposure, social interactions, and academic outcomes in Arizona schools.</p>
+											<div class="grant-links">
+												<a href="https://www.rwjf.org/en/grants/what-we-fund/evidence-for-action.html" target="_blank" class="grant-link">
+													<i class="fas fa-external-link-alt"></i> RWJF Evidence for Action
+												</a>
+											</div>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Modeling Distributed Energy Resource Solar Generation Output</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">S</span>
+											Salt River Project
+										</div>
+										<div class="grant-details">
+											<div class="grant-detail-item">
+												<span class="detail-label">Amount</span>
+												<span class="detail-value funding-amount">$79,700</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">PI</span>
+												<span class="detail-value">Lim</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Role</span>
+												<span class="detail-value">Principal Investigator</span>
+											</div>
+											<div class="grant-detail-item">
+												<span class="detail-label">Period</span>
+												<span class="detail-value">2024 – 2025</span>
+											</div>
+										</div>
+									<div class="grant-summary">
+											<p>This project developed advanced modeling techniques to predict solar generation output from distributed energy resources across the Salt River Project service territory. The research aimed to improve grid stability and optimize renewable energy integration in Arizona's power infrastructure.</p>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+
+
+
 								</div>
+								
 							</section>
-							</div>
+					</div>
+
 				<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
-							<ul class="icons">
-									</ul>
+							<div style="text-align: center; margin-bottom: 2em;">
+								<img src="images/lablogo.png" alt="HUM.Lab Logo" style="max-width: 200px; height: auto;">
+							</div>
+							<ul class="copyright">
+								<li>&copy; HUM.Lab. All rights reserved.</li>
+							</ul>
 						</div>
-						<p class="copyright">&copy; HUM.Lab. All rights reserved.</p>
 					</footer>
+
 			</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function toggleSummary(btn) {
+					const grantItem = btn.closest('.grant-item');
+					const summary = grantItem.querySelector('.grant-summary');
+					
+					if (summary.style.display === 'block') {
+						summary.style.display = 'none';
+						btn.classList.remove('expanded');
+					} else {
+						summary.style.display = 'block';
+						btn.classList.add('expanded');
+					}
+				}
+			</script>
 
 	</body>
 </html>
