@@ -198,13 +198,15 @@ input, select, textarea {
 	}
 
  h2 {
-		font-family: "Roboto", sans-serif;
+		font-family: "Barlow", sans-serif;
 		font-weight: 200;
 		letter-spacing: 0.15em;
 	}
 	
 	h1 {
-		font-size: 2.2em;
+	  font-family: "Roberto", sans-serif;
+    
+		font-size: 1.5em;
 	}
 
 	h2 {
