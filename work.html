@@ -108,8 +108,6 @@
 				box-shadow: 0 4px 10px rgba(132, 219, 189, 0.3);
 			}
 			
-			.grant-link i {
-			}
 			
 			/* Enhanced Grant Items */
 			.grant-item {
@@ -159,29 +157,6 @@
 				padding-right: 60px;
 			}
 			
-			.grant-status {
-				display: inline-block;
-				padding: 0.4em 1em;
-				border-radius: 20px;
-				font-weight: 500;
-				text-transform: uppercase;
-			}
-			
-			.status-active {
-				background: #84dbbd;
-				color: white;
-			}
-			
-			.status-completed {
-				background: #95a5a6;
-				color: white;
-			}
-			
-			.status-pending {
-				background: #f39c12;
-				color: white;
-			}
-			
 			.grant-agency {
 				color: #7f8c8d;
 				font-weight: 400;
@@ -206,7 +181,7 @@
 			
 			.grant-details {
 				display: grid;
-				grid-template-columns: repeat(4, 1fr);
+				grid-template-columns: repeat(3, 1fr);
 				gap: 1.5em;
 				margin-bottom: 1em;
 			}
@@ -229,9 +204,6 @@
 				font-weight: 400;
 			}
 			
-			.funding-amount {
-				color: #84dbbd;
-			}
 
 			/* Section Headers */
 			.main-section {
@@ -273,31 +245,17 @@
 				font-size: 1.2em;
 			}
 			
-			.subsection-header {
-				margin: 2em 0 1.5em 0;
-				padding-bottom: 0.5em;
-				border-bottom: 2px solid #ecf0f1;
-			}
-			
-			.subsection-header h3 {
-				color: #7f8c8d;
-				font-weight: 400;
-				letter-spacing: 1px;
-				text-transform: uppercase;
-				font-size: 1.75em;
-			}
-			
 			/* Responsive adjustments */
 			@media screen and (max-width: 736px) {
 				.grant-details {
-					flex-direction: column;
+					grid-template-columns: 1fr;
 					gap: 1em;
 				}
-				
+
 				.grant-header {
 					flex-direction: column;
 				}
-				
+
 				.grant-title {
 					padding-right: 0;
 				}
@@ -356,10 +314,6 @@
 									<div class="grant-summary">
 											<div class="grant-details">
 												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$1,200,000</span>
-												</div>
-												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Lim</span>
 												</div>
@@ -374,6 +328,9 @@
 											</div>
 											<p>This project investigates how neighborhood characteristics, including built environment features and social factors, influence cancer risk across diverse U.S. populations. The research examines how factors such as walkability, green space access, air quality, and social cohesion may contribute to cancer disparities.</p>
 											<div class="grant-links">
+												<a href="https://proposalcentral.com/Insights/_Yrlp59zpbg=/Public/AwardDetails/1259248" target="_blank" class="grant-link">
+													<i class="fas fa-file-alt"></i> Award Details
+												</a>
 												<a href="https://www.cancer.org/" target="_blank" class="grant-link">
 													<i class="fas fa-external-link-alt"></i> American Cancer Society
 												</a>
@@ -392,10 +349,6 @@
 										</div>
 									<div class="grant-summary">
 											<div class="grant-details">
-												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$1,621,980</span>
-												</div>
 												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Lim</span>
@@ -433,10 +386,6 @@
 									<div class="grant-summary">
 											<div class="grant-details">
 												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$78,700</span>
-												</div>
-												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Lim & Estacio</span>
 												</div>
@@ -465,10 +414,6 @@
 									<div class="grant-summary">
 											<div class="grant-details">
 												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$78,700</span>
-												</div>
-												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Lim</span>
 												</div>
@@ -496,10 +441,6 @@
 										</div>
 									<div class="grant-summary">
 											<div class="grant-details">
-												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$2,732,383</span>
-												</div>
 												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Ding</span>
@@ -537,10 +478,6 @@
 									<div class="grant-summary">
 											<div class="grant-details">
 												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$1,348,885</span>
-												</div>
-												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Thurston (NYU)</span>
 												</div>
@@ -573,10 +510,6 @@
 										</div>
 									<div class="grant-summary">
 											<div class="grant-details">
-												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$3,827,073</span>
-												</div>
 												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Ernst, Arora, Hoover</span>
@@ -614,10 +547,6 @@
 									<div class="grant-summary">
 											<div class="grant-details">
 												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$8,250,000</span>
-												</div>
-												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Sailor (ASU), Keith (UA)</span>
 												</div>
@@ -651,10 +580,6 @@
 									<div class="grant-summary">
 											<div class="grant-details">
 												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$500,000</span>
-												</div>
-												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Shepp (PDEQ)</span>
 												</div>
@@ -672,8 +597,69 @@
 										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
 									</div>
 
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">The Effects of Early College High School and P-TECH Models on Postsecondary and Labor Market Outcomes</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">A</span>
+											Arnold Ventures
+										</div>
+									<div class="grant-summary">
+											<div class="grant-details">
+												<div class="grant-detail-item">
+													<span class="detail-label">PI</span>
+													<span class="detail-value">Kim & Lim</span>
+												</div>
+												<div class="grant-detail-item">
+													<span class="detail-label">Role</span>
+													<span class="detail-value">MPI (with Bokyung Kim, UConn)</span>
+												</div>
+												<div class="grant-detail-item">
+													<span class="detail-label">Period</span>
+													<span class="detail-value">2025 – 2028</span>
+												</div>
+											</div>
+											<p>This project examines the effects of Early College High School and P-TECH (Pathways in Technology Early College High School) models on students' postsecondary education attainment and labor market outcomes.</p>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
 									</div>
-									
+
+									<div class="grant-item">
+										<div class="grant-header">
+											<div class="grant-title">Low-Cost Amperometric Ozone Monitor for Communities Affected by Wildfires</div>
+										</div>
+										<div class="grant-agency">
+											<span class="agency-icon">N</span>
+											National Institute of Environmental Health Sciences (SBIR Phase II)
+										</div>
+									<div class="grant-summary">
+											<div class="grant-details">
+												<div class="grant-detail-item">
+													<span class="detail-label">PI</span>
+													<span class="detail-value">Giner, Inc.</span>
+												</div>
+												<div class="grant-detail-item">
+													<span class="detail-label">Role</span>
+													<span class="detail-value">Subcontract PI</span>
+												</div>
+												<div class="grant-detail-item">
+													<span class="detail-label">Period</span>
+													<span class="detail-value">2025 – 2027</span>
+												</div>
+											</div>
+											<p>This SBIR Phase II project develops a low-cost amperometric ozone monitoring system designed for deployment in communities affected by wildfire smoke, enabling real-time air quality monitoring and public health protection.</p>
+											<div class="grant-links">
+												<a href="https://reporter.nih.gov/search/NzRU-mw_-UOcYzvSgqYKSw/project-details/11185491" target="_blank" class="grant-link">
+													<i class="fas fa-file-alt"></i> NIH RePORTER
+												</a>
+											</div>
+										</div>
+										<span class="expand-summary-btn" onclick="toggleSummary(this)"></span>
+									</div>
+
+									</div>
+
 									<!-- PAST PROJECTS -->
 									<div class="main-section">
 										<div class="main-section-header">
@@ -691,10 +677,6 @@
 										</div>
 									<div class="grant-summary">
 											<div class="grant-details">
-												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$303,972</span>
-												</div>
 												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Lim</span>
@@ -729,10 +711,6 @@
 										</div>
 									<div class="grant-summary">
 											<div class="grant-details">
-												<div class="grant-detail-item">
-													<span class="detail-label">Amount</span>
-													<span class="detail-value funding-amount">$79,700</span>
-												</div>
 												<div class="grant-detail-item">
 													<span class="detail-label">PI</span>
 													<span class="detail-value">Lim</span>
