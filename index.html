@@ -55,7 +55,13 @@
 									'images/phoenix_banner2.webm',  // downtown dusk-to-night timelapse
 									'images/phoenix_banner4.webm'   // Google Earth metro growth timelapse
 								];
-								document.getElementById('banner-video').src = vids[Math.floor(Math.random() * vids.length)];
+								var i = Math.floor(Math.random() * vids.length);
+								try {
+									var prev = localStorage.getItem('bannerVidIdx');
+									if (prev !== null) i = (parseInt(prev, 10) + 1) % vids.length;
+									localStorage.setItem('bannerVidIdx', i);
+								} catch (e) {}
+								document.getElementById('banner-video').src = vids[i];
 							})();
 						  </script>
 					</section>
