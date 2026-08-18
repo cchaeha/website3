@@ -47,7 +47,17 @@
 							</header>
 						</div>
 							<a href="#one" class="more">Learn More</a>
-						  <video src="images/phoenix_banner4.webm" muted autoplay loop playsinline preload="auto"></video>
+						  <video id="banner-video" muted autoplay loop playsinline preload="auto"></video>
+						  <script>
+							(function() {
+								var vids = [
+									'images/phoenix_banner.webm',   // haboob rolling over the city
+									'images/phoenix_banner2.webm',  // downtown dusk-to-night timelapse
+									'images/phoenix_banner4.webm'   // Google Earth metro growth timelapse
+								];
+								document.getElementById('banner-video').src = vids[Math.floor(Math.random() * vids.length)];
+							})();
+						  </script>
 					</section>
 
 				<!-- Wrapper -->
@@ -149,7 +159,7 @@ The Health & Urban Modeling Lab is led by Chris C. Lim, Associate Professor at t
 							<div style="text-align: center; margin-bottom: 2em;">
 								<img src="images/lablogo.png" alt="HUM.Lab Logo" style="max-width: 200px; height: auto;">
 							</div>
-							<p class="copyright">&copy; HUM.Lab. All rights reserved. Phoenix photos: DPPed and dconvertini (CC BY-SA); banner video: Google Earth Timelapse (CC BY 3.0), via Wikimedia Commons.</p>
+							<p class="copyright">&copy; HUM.Lab. All rights reserved. Phoenix photos: DPPed and dconvertini (CC BY-SA); banner videos: epicrender, Chris Martino, and Google Earth Timelapse (CC BY 3.0), via Wikimedia Commons.</p>
 						</div>
 					</footer>
 
