@@ -13,17 +13,15 @@ Pixelarity "Formula" template. No build step: push to main = deploy.
   humlab.co-vs-asu.edu domain decision, and a configuration pick.
 
 ## Open defects — flagged, unowned
-- papers.html:117-146 — K-IOP Study paper appears twice (under 2024 AND 2023) — delete one.
-- papers.html:~110 — 2024 ISPRS Urban Green Space entry links to a thelancet.com
-  EBioMedicine URL (belongs to the 2023 HAB paper) — find the correct ISPRS link.
 - team.html — alumni cards keep student-era titles ("MS in Epidemiology Student",
   "Expected 2026"); update with grad years / destinations when known.
 - images/ — unused Tucson-era media (test4.webm, tucsonvid.mp4, test.mov,
   banner.mp4/webm, tucson2.jpeg, image1.jpg) bloats the repo; safe to delete.
 
 ## Last sessions (newest first, max 5)
-- 2026-08-18 claude: shipped codex's uncommitted fixes (Lab-at-a-Glance removal,
-  work.html recolor) after verifying; scaffolded this baton.
+- 2026-08-18 claude: fixed papers.html defects (K-IOP duplicate removed, ISPRS
+  link corrected to its real DOI); shipped codex's uncommitted fixes
+  (Lab-at-a-Glance removal, work.html recolor); scaffolded this baton.
 - 2026-08-18 claude: ASU transition day — affiliation/banner, 2 new 2026 papers,
   team moves (Maiya in, 5 to Alumni), Phoenix photos + rotating hero videos,
   favicon, maroon/gold colorway, icons fixed, meta descriptions.
