@@ -19,6 +19,8 @@ Pixelarity "Formula" template. No build step: push to main = deploy.
   banner.mp4/webm, tucson2.jpeg, image1.jpg) bloats the repo; safe to delete.
 
 ## Last sessions (newest first, max 5)
+- 2026-08-26 claude: added Goeun Jung (PhD student; edu from her personal site)
+  and Louise Biville (visiting PhD student) from the "Website" email thread.
 - 2026-08-18 claude: fixed papers.html defects (K-IOP duplicate removed, ISPRS
   link corrected to its real DOI); shipped codex's uncommitted fixes
   (Lab-at-a-Glance removal, work.html recolor); scaffolded this baton.
