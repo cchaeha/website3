@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<!-- Formula by Pixelarity, pixelarity.com/license. Existing HUM.Lab site template. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Remnants of Ida | HUM.Lab Visualizations</title>
+  <meta name="description" content="Rain, ambulance drive time and calls held during the remnants of Ida in New York City.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/visualizations/visualizations.css">
+</head>
+<body class="is-preload viz-page">
+<div id="page-wrapper">
+  <header id="header">
+    <a href="/index.html" class="logo">HUM.<span>Lab</span></a>
+    <nav aria-label="Site menu"><ul><li><a href="#menu">Menu</a></li></ul></nav>
+  </header>
+  <nav id="menu" aria-label="Main navigation">
+    <ul class="links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/team.html">Team</a></li>
+      <li><a href="/papers.html">Publications</a></li>
+      <li><a href="/work.html">Projects</a></li>
+      <li><a href="/visualizations/">Visualizations</a></li>
+    </ul>
+  </nav>
+  <div id="wrapper">
+    <main id="main" class="main viz-main">
+      <div class="inner">
+        <a class="viz-back" href="/visualizations/">Visualizations</a>
+        <header class="viz-heading">
+          <h1>Remnants of Ida</h1>
+          <p>New York City · 1-2 September 2021</p>
+        </header>
+        <figure class="viz-player">
+          <video id="replay" controls muted playsinline loop preload="metadata" poster="poster.webp" width="1600" height="900" aria-label="Remnants of Ida" aria-describedby="replay-caption">
+            <source src="replay.mp4" type="video/mp4">
+            <a href="replay.mp4">Watch the visualization</a>.
+          </video>
+          <div class="viz-tools"><a class="button" href="replay.mp4" target="_blank" rel="noopener">Open video</a></div>
+          <figcaption id="replay-caption" class="viz-caption">
+            <p>Follow city-average rain, ambulance drive time to patients and the share of medical calls held during the storm.</p>
+            <ul>
+              <li><strong>Map:</strong> borough shading shows the change in median drive time over the preceding three hours, compared with the matching hours in six nearby weeks. Hatched boroughs have fewer than 15 calls in the window.</li>
+              <li><strong>Call markers:</strong> positions are randomized within each call’s ZIP code. Orange rings mark held calls.</li>
+              <li><strong>Rain:</strong> the hourly NLDAS-2 city average. Borough colors show drive time, rather than local rainfall.</li>
+              <li><strong>Usual:</strong> the same clock hours one, two and three weeks before and after the event.</li>
+            </ul>
+            <p>These are observed records from one storm, rather than estimates of a causal effect.</p>
+            <p class="viz-sources">Data: <a href="https://data.cityofnewyork.us/">NYC Open Data</a> (EMS incidents) and <a href="https://ldas.gsfc.nasa.gov/nldas">NASA NLDAS-2</a> (rainfall). Visualization: HUM.Lab.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </main>
+  </div>
+  <footer id="footer">
+    <div class="inner"><p>Health &amp; Urban Modeling Lab<br>Arizona State University · Phoenix, Arizona</p><p class="copyright">&copy; HUM.Lab. All rights reserved.</p></div>
+  </footer>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.scrolly.min.js"></script>
+<script src="/assets/js/jquery.scrollex.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/visualizations/player.js"></script>
+</body>
+</html>
