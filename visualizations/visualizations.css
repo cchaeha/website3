@@ -50,6 +50,12 @@
 .viz-page #footer p{color:var(--viz-muted);font-size:.9375rem;line-height:1.6;letter-spacing:0;text-transform:none;margin:0 0 .6rem}
 .viz-page #footer .copyright{font-size:.875rem;margin-bottom:0}
 .viz-page :focus-visible{outline:2px solid #c4d4dd;outline-offset:5px}
+.viz-page-az{--viz-bg:#ffffff;--viz-ink:#1e140b;--viz-copy:#625b51;--viz-muted:#716a60;--viz-rule:#dfd6c7}
+.viz-page-az #menu{background:#fffcf6}
+.viz-page-az #footer{background:#f7f7f7}
+.viz-page-az #header nav ul li a[href="#menu"]:before{filter:none}
+.viz-page-az .button{border-bottom-color:#b9ac98!important}
+.viz-page-az :focus-visible{outline-color:#8c1d40}
 @media(max-width:800px){
  .viz-page #header{padding:0 1.5rem}
  .viz-page .viz-main{padding:2.25rem 0 2.5rem}
