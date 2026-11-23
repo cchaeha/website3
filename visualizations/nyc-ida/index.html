@@ -9,7 +9,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <link rel="icon" type="image/png" href="/images/favicon.png">
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/visualizations/visualizations.css">
+  <link rel="stylesheet" href="/visualizations/visualizations.css?v=20261122-lab">
 </head>
 <body class="is-preload viz-page">
 <div id="page-wrapper">
@@ -35,16 +35,16 @@
           <p>New York City · 1-2 September 2021</p>
         </header>
         <figure class="viz-player">
-          <video id="replay" controls muted playsinline loop preload="metadata" poster="poster.webp" width="1600" height="900" aria-label="Remnants of Ida" aria-describedby="replay-caption">
-            <source src="replay.mp4" type="video/mp4">
-            <a href="replay.mp4">Watch the visualization</a>.
+          <video id="replay" controls muted playsinline loop preload="metadata" poster="poster.webp?v=20261122-lab" width="1600" height="900" aria-label="Remnants of Ida" aria-describedby="replay-caption">
+            <source src="replay.mp4?v=20261122-lab" type="video/mp4">
+            <a href="replay.mp4?v=20261122-lab">Watch the visualization</a>.
           </video>
-          <div class="viz-tools"><a class="button" href="replay.mp4" target="_blank" rel="noopener">Open video</a></div>
+          <div class="viz-tools"><a class="button" href="replay.mp4?v=20261122-lab" target="_blank" rel="noopener">Open video</a></div>
           <figcaption id="replay-caption" class="viz-caption">
             <p>Follow city-average rain, ambulance drive time to patients and the share of medical calls held during the storm.</p>
             <ul>
               <li><strong>Map:</strong> borough shading shows the change in median drive time over the preceding three hours, compared with the matching hours in six nearby weeks. Hatched boroughs have fewer than 15 calls in the window.</li>
-              <li><strong>Call markers:</strong> positions are randomized within each call’s ZIP code. Orange rings mark held calls.</li>
+              <li><strong>Call markers:</strong> positions are randomized within each call’s ZIP code. Rings mark held calls.</li>
               <li><strong>Rain:</strong> the hourly NLDAS-2 city average. Borough colors show drive time, rather than local rainfall.</li>
               <li><strong>Usual:</strong> the same clock hours one, two and three weeks before and after the event.</li>
             </ul>
